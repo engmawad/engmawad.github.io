@@ -117,32 +117,25 @@ footer {
     }
     
 } 
-/* قسم الروابط */
 .social-links {
-    display: flex; /* لعرض العناصر بجانب بعض */
-    justify-content: center; /* توسيط العناصر أفقياً */
-    flex-wrap: wrap; /* السماح للعناصر بالانتقال إلى صف جديد إذا لزم الأمر */
-    gap: 15px; /* مسافة بين الروابط */
-    margin-bottom: 20px; /* مسافة أسفل كل مجموعة */
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+    gap: 15px; 
+    margin-bottom: 20px; 
 }
-
-/* الروابط الفردية */
 .social-links a {
-    text-decoration: none; /* إزالة الخط تحت النص */
-    color: inherit; /* استخدام لون النص الحالي */
-    display: flex; /* لجعل الأيقونة والنص في نفس السطر */
-    align-items: center; /* محاذاة الأيقونة مع النص */
-    gap: 8px; /* مسافة بين الأيقونة والنص */
-    font-size: 1.2rem; /* حجم النص والأيقونات */
+    text-decoration: none;
+    color: inherit; 
+    display: flex;
+    align-items: center; 
+    gap: 8px; 
+    font-size: 1.2rem; 
 }
-
-/* الأيقونات */
 .social-links a i {
-    font-size: 1.5rem; /* حجم الأيقونات */
+    font-size: 1.5rem;
 }
-
-/* الخط الفاصل */
 hr {
-    border: 1px solid #ccc; /* لون وحجم الخط */
-    margin: 20px 0; /* مسافة فوق وتحت الخط */
+    border: 1px solid #ccc; 
+    margin: 20px 0; 
 }
