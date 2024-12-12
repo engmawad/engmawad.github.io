@@ -86,3 +86,63 @@ footer {
     background: #333;
     color: white;
 }
+.about-container {
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+.profile-img {
+    width: 150px;
+    height: 150px; 
+    border-radius: 50%; 
+    flex-shrink: 0; 
+}
+
+.about-container p {
+    flex: 1; 
+    text-align: justify;
+}
+
+
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .profile-img {
+        margin-bottom: 20px; 
+    }
+    
+} 
+/* قسم الروابط */
+.social-links {
+    display: flex; /* لعرض العناصر بجانب بعض */
+    justify-content: center; /* توسيط العناصر أفقياً */
+    flex-wrap: wrap; /* السماح للعناصر بالانتقال إلى صف جديد إذا لزم الأمر */
+    gap: 15px; /* مسافة بين الروابط */
+    margin-bottom: 20px; /* مسافة أسفل كل مجموعة */
+}
+
+/* الروابط الفردية */
+.social-links a {
+    text-decoration: none; /* إزالة الخط تحت النص */
+    color: inherit; /* استخدام لون النص الحالي */
+    display: flex; /* لجعل الأيقونة والنص في نفس السطر */
+    align-items: center; /* محاذاة الأيقونة مع النص */
+    gap: 8px; /* مسافة بين الأيقونة والنص */
+    font-size: 1.2rem; /* حجم النص والأيقونات */
+}
+
+/* الأيقونات */
+.social-links a i {
+    font-size: 1.5rem; /* حجم الأيقونات */
+}
+
+/* الخط الفاصل */
+hr {
+    border: 1px solid #ccc; /* لون وحجم الخط */
+    margin: 20px 0; /* مسافة فوق وتحت الخط */
+}
