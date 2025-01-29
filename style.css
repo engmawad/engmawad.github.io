@@ -1,0 +1,218 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    background: #0073e6;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2.5em;
+}
+
+header p {
+    margin: 10px 0 0;
+    font-size: 1.2em;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.section {
+    padding: 40px 20px;
+    text-align: center;
+}
+
+#about {
+    background: #f9f9f9;
+}
+
+#projects {
+    background: #e6f7ff;
+}
+
+.project {
+    margin-bottom: 20px;
+}
+
+#contact {
+    background: #f9f9f9;
+}
+
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input, textarea, button {
+    padding: 10px;
+    font-size: 1em;
+    width: 100%;
+}
+
+button {
+    background: #0073e6;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
+    padding: 10px;
+    background: #333;
+    color: white;
+}
+.about-container {
+    display: flex; 
+    align-items: center; 
+    gap: 20px; 
+    flex-wrap: wrap; 
+}
+.profile-img {
+    width: 150px;
+    height: 150px; 
+    border-radius: 50%; 
+    flex-shrink: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.profile-img:hover {
+    transform: scale(1.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.about-container p {
+    flex: 1; 
+    text-align: justify;
+}
+
+
+@media (max-width: 768px) {
+    .about-container {
+        flex-direction: column; 
+        align-items: center; 
+        text-align: center; 
+    }
+
+    .profile-img {
+        margin-bottom: 20px; 
+    }
+    
+} 
+.social-links {
+    display: flex;
+    justify-content: center; 
+    flex-wrap: wrap;
+    gap: 15px; 
+    margin-bottom: 20px; 
+}
+.social-links a {
+    text-decoration: none;
+    color: inherit; 
+    display: flex;
+    align-items: center; 
+    gap: 8px; 
+    font-size: 1.2rem; 
+}
+.social-links a i {
+    font-size: 1.5rem;
+}
+hr {
+    border: 1px solid #ccc; 
+    margin: 20px 0; 
+}
+/* Section Styles */
+.section {
+    padding: 50px 20px;
+    text-align: center;
+    background-color: #e6f7ff;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2em;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Competitions Container */
+.competitions-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Individual Competition Card */
+.competition-card {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    width: 300px;
+    text-align: center;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.competition-card h3 {
+    font-size: 1.5em;
+    color: #007BFF;
+    margin-bottom: 00px;
+}
+
+.competition-card p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.5;
+}
+
+.competition-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+.competition-card a {
+    display: block;
+    text-decoration: none; 
+    color: inherit; 
+    background-color: #fff;
+}
+.place-img {
+    width: 150px;
+    height: 150px; 
+    flex-shrink: 0; 
+}
+.power-img {
+    width: 300px;
+    height: 210px; 
+    flex-shrink: 0; 
+}
+.move-img {
+    width: 300px;
+    height: 240px; 
+    flex-shrink: 0; 
+}
+
