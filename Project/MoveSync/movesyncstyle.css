@@ -86,3 +86,18 @@ h2 {
     justify-content: center;
     font-size: 25px;
 }
+
+.video-container {
+    text-align: center;
+    margin-top: 50px;
+}
+video {
+    width: 70%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+video:hover {
+    box-shadow: 0 4px 10px #0056b3;
+}
+
