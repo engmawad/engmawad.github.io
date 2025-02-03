@@ -31,6 +31,9 @@ nav ul {
     justify-content: center;
     gap: 20px;
 }
+nav li:hover {
+    transform: scale(1.2);
+}
 
 nav a {
     color: white;
@@ -140,6 +143,10 @@ footer {
 .social-links a i {
     font-size: 1.5rem;
 }
+.social-links a:hover {
+    transform: scale(1.2);
+}
+
 hr {
     border: 1px solid #ccc; 
     margin: 20px 0; 
