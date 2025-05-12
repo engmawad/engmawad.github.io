@@ -1,0 +1,160 @@
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+
+    
+}
+
+.ma{
+    padding: 20px;
+}
+
+
+header {
+    background-color: #0056b3;
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2rem;
+}
+.st{
+    width: 17%;
+}
+
+p{
+    text-align: left; 
+    flex: 1; 
+    text-align: justify;
+}
+
+
+.me {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    text-align: center;
+}
+
+main section {
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: #0056b3;
+}
+
+
+
+
+.project-media {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.project-media img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-media img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+.video-desktop,
+.video-mobile {
+      display: none;
+}
+@media (min-width: 768px) {
+    .video-desktop {
+      display: block;
+    }
+}
+@media (max-width: 767px) {
+    .video-mobile {
+      display: block;
+    }
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin: 20px 0;
+}
+.videoa-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+video {
+    width: 60%;
+    max-width: 800px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: center;
+    
+}
+video:hover {
+    box-shadow: 0 4px 10px #0056b3;
+}
+
+
+.github-container {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.github-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background-color: #333;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 18px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.github-btn:hover {
+  background-color: #555;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+.github-icon {
+  width: 36px;
+}
+.github-btn {
+  background-color: #0056b3; 
+}
+.github-btn:hover {
+  background-color: #5282b5; 
+}
