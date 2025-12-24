@@ -1,225 +1,369 @@
-
+/* إعدادات عامة */
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     padding: 0;
     color: #333;
+    background-color: #f8fafc;
+    scroll-behavior: smooth;
 }
 
-header {
-    background: #0073e6;
-    color: white;
+/* الحاوية الأساسية */
+.tech-navbar {
+    width: 100%;
     padding: 20px 0;
+    background: transparent; /* خليناه شفاف عشان الموقع "يتنفس" */
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.nav-wrapper {
+    max-width: 600px; /* خلينا العرض محكوم عشان يلم اللينكات في النص */
+    margin: 0 auto;
+    position: relative;
     text-align: center;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5em;
-}
-
-header p {
-    margin: 10px 0 0;
-    font-size: 1.2em;
-}
-
-nav ul {
+.nav-items {
     list-style: none;
-    padding: 0;
-    margin: 20px 0 0;
     display: flex;
     justify-content: center;
-    gap: 20px;
-}
-nav li:hover {
-    transform: scale(1.2);
+    gap: 40px;
+    padding: 0;
+    margin-bottom: 10px;
 }
 
-nav a {
-    color: white;
+.nav-items li a {
     text-decoration: none;
-    font-weight: bold;
+    color: #555; /* لون هادي */
+    font-weight: 600;
+    font-size: 1rem;
+    transition: 0.4s;
+    letter-spacing: 0.5px;
 }
 
-.section {
-    padding: 40px 20px;
-    text-align: center;
+/* الموشن: لما تقف على كلمة */
+.nav-items li a:hover {
+    color: #0073e6; /* يقلب للون الأزرق بتاعك */
+    transform: translateY(-3px); /* حركة بسيطة لفوق */
+    display: inline-block;
 }
 
-#about {
-    background: #f9f9f9;
+/* الخط الهندسي الرفيع */
+.nav-base-line {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #0073e6, transparent);
+    margin-top: 5px;
+    opacity: 0.3;
 }
 
-#projects {
-    background: #e6f7ff;
-}
-
-.project {
-    margin-bottom: 20px;
-}
-
-#contact {
-    background: #f9f9f9;
-}
-
-form {
-    max-width: 400px;
+/* تأثير الخط لما تقف على اللينك */
+.nav-items li a::after {
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background: #0073e6;
+    transition: width .3s;
     margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
 }
 
-input, textarea, button {
-    padding: 10px;
-    font-size: 1em;
+.nav-items li a:hover::after {
     width: 100%;
 }
 
-button {
-    background: #0073e6;
-    color: white;
-    border: none;
-    cursor: pointer;
+.name {
+    color:#0073e6;
+
 }
 
-footer {
-    text-align: center;
-    padding: 10px;
-    background: #333;
-    color: white;
-}
+/* الأقسام */
+.section { padding: 80px 20px; text-align: center; }
+.dark-bg { background-color: #f1f5f9; }
+
+/* About Section */
 .about-container {
-    display: flex; 
-    align-items: center; 
-    gap: 20px; 
-    flex-wrap: wrap; 
+    display: flex;
+    align-items: center;
+    max-width: 1000px;
+    margin: 0 auto 50px;
+    gap: 40px;
+    text-align: left;
 }
-.profile-img {
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 40px 0;
+}
+
+.profile-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-main {
     width: 150px;
-    height: 150px; 
-    border-radius: 50%; 
-    flex-shrink: 0;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-.profile-img:hover {
-    transform: scale(1.2);
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    height: 150px;
+    border-radius: 50%;
+    z-index: 10;
+    border: 4px solid #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.1);
+    transition: 0.5s;
 }
 
-.about-container p {
-    flex: 1; 
-    text-align: justify;
-}
-
-
-@media (max-width: 768px) {
-    .about-container {
-        flex-direction: column; 
-        align-items: center; 
-        text-align: center; 
-    }
-
-    .profile-img {
-        margin-bottom: 20px; 
-    }
-    
-} 
-.social-links {
+.profile-wrapper {
+    position: relative;
+    width: 150px; /* نفس مقاس صورتك */
+    height: 150px;
+    margin: 0 auto;
     display: flex;
-    justify-content: center; 
-    flex-wrap: wrap;
-    gap: 15px; 
-    margin-bottom: 20px; 
-}
-.social-links a {
-    text-decoration: none;
-    color: inherit; 
-    display: flex;
-    align-items: center; 
-    gap: 8px; 
-    font-size: 1.2rem; 
-}
-.social-links a i {
-    font-size: 1.5rem;
-}
-.social-links a:hover {
-    transform: scale(1.2);
+    align-items: center;
+    justify-content: center;
 }
 
-hr {
-    border: 1px solid #ccc; 
-    margin: 20px 0; 
+/* تأكد إن الدايرة واخدة absolute عشان متزقش الصورة */
+.profile-ring {
+    position: absolute;
+    top: -5px; /* تظبطها حسب حجم الفراغ اللي عايزه */
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px dashed #0073e6; /* أو الـ animation اللي كنت عامله */
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
+    z-index: 1; /* تحت الصورة */
 }
-/* Section Styles */
-.section {
-    padding: 50px 20px;
+
+.profile-link {
+    position: relative;
+    z-index: 2; /* فوق الدايرة عشان يستقبل الضغطة */
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+}
+
+.profile-img-pro {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+/* دلع إضافي: الصورة تكبر سنة لما تقف عليها */
+.profile-link:hover .profile-img-pro {
+    transform: scale(1.1);
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+/* إخفاء الصورة الكبيرة في الحالة العادية */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    width: 100%;
+    height: 100%;
     text-align: center;
-    background-color: #e6f7ff;
-    margin-bottom: 20px;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8); /* خلفية سوداء شفافة */
+    padding-top: 50px;
 }
 
-h2 {
-    font-size: 2em;
-    color: #333;
-    margin-bottom: 20px;
+/* إظهار الصورة لما تضغط على الرابط */
+.lightbox:target {
+    display: block;
 }
 
-/* Competitions Container */
+.lightbox img {
+    max-width: 90%;
+    max-height: 80%;
+    border: 5px solid white;
+    border-radius: 15px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+/* التعديل المهم هنا */
+.profile-link {
+    display: inline-block; /* بيخلي الرابط ياخد حجم اللي جواه بس (الصورة) */
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 50%; /* لو الصورة مدورة، يخلي حدود الضغط مدورة برضه */
+    overflow: hidden;
+}
+
+/* تأكد إن صورة البروفايل ليها مقاس ثابت وما بتخرجش عن الرابط */
+.profile-img-pro {
+    display: block; /* بيشيل الفراغ البسيط اللي تحت الصور */
+    width: 150px;   /* حط المقاس اللي تحبه */
+    height: 150px;
+    object-fit: cover;
+}
+/* 1. تأثير الثبات: نوقف الأنيميشن لما الماوس يقرب */
+.profile-wrapper:hover .profile-ring {
+    animation-play-state: paused; /* الدائرة تثبت مكانها */
+    border-style: solid; /* لو حابب الخط المنقط يقلب خط صلب عند الوقوف */
+    border-color: #0073e6;
+    
+    /* 2. تأثير الإشعاع (Glow) */
+    box-shadow: 0 0 15px rgba(0, 115, 230, 0.8), 
+                0 0 30px rgba(0, 115, 230, 0.4);
+    transition: all 0.3s ease; /* تنعيم التحول */
+}
+
+/* تأكد إن الـ profile-ring عندها التنسيق الأساسي ده */
+.profile-ring {
+    position: absolute;
+    inset: -5px; /* بيغطي المساحة من كل الجهات */
+    border: 2px dashed #0073e6;
+    border-radius: 50%;
+    animation: rotate 10s linear infinite;
+    z-index: 1;
+    pointer-events: none; /* مهم جداً: بيخلي الماوس "يخترق" الدايرة ويروح للصورة */
+}
+
+/* Technical Expertise (The Grid) */
+.skills-title { font-size: 2rem; color: #1e293b; margin-bottom: 30px; }
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    background: #fff;
+    padding: 20px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    border: 1px solid #f1f5f9;
+    transition: 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.06);
+    border-color: #0073e6;
+}
+
+.icon-circle {
+    width: 55px;
+    height: 55px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+/* ألوان الأيقونات */
+.blue-bg { background: #eff6ff; color: #3b82f6; }
+.green-bg { background: #f0fdf4; color: #22c55e; }
+.orange-bg { background: #fff7ed; color: #f97316; }
+.purple-bg { background: #f5f3ff; color: #8b5cf6; }
+.red-bg { background: #fef2f2; color: #ef4444; }
+.yellow-bg { background: #fefce8; color: #eab308; }
+.darkblue-bg { background: #f0f9ff; color: #0ea5e9; }
+
+.skill-info h4 { margin: 0; font-size: 1.05rem; color: #1e293b; }
+.skill-info p { margin: 4px 0 0; font-size: 0.85rem; color: #64748b; }
+
+/* Competitions & Projects Cards */
+/* 1. حاوية الكروت (للتأكد من أنها بجانب بعضها) */
 .competitions-container {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
     justify-content: center;
+    padding: 20px;
 }
 
-/* Individual Competition Card */
+/* 2. تعديل حجم الكارت نفسه */
 .competition-card {
     background-color: #fff;
     border: 1px solid #ddd;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    padding: 10px;
-    width: 300px;
+    border-radius: 12px; /* حواف أنعم */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    padding: 15px;
+    width: 280px; /* عرض ثابت ومناسب */
+    height: auto; /* خليه يتحدد بناءً على المحتوى */
+    max-height: 400px; /* حد أقصى للطول عشان ميسرحش منك */
     text-align: center;
     transition: transform 0.3s, box-shadow 0.3s;
+    overflow: hidden; /* عشان لو في حاجة خرجت بره الكارت */
 }
 
+/* 3. أهم جزء: حجم الصور داخل الكروت */
+.competition-card img {
+    width: 100%; /* العرض كامل داخل الكارت */
+    height: 180px; /* ارتفاع ثابت للصور عشان كل الكروت تبقى طول واحد */
+    object-fit: contain; /* ده بيخلي الصورة تظهر كاملة بدون مط أو قص */
+    margin-bottom: 15px;
+    border-radius: 8px;
+    background: #f9f9f9; /* خلفية خفيفة للصور */
+}
+
+/* 4. تصغير حجم العناوين داخل الكروت */
 .competition-card h3 {
-    font-size: 1.5em;
-    color: #007BFF;
-    margin-bottom: 00px;
+    font-size: 1.1rem;
+    color: #333;
+    margin: 10px 0;
+    line-height: 1.4;
+    height: 3em; /* حجز مساحة لسطرين عشان العناوين الطويلة متلخبطش المقاس */
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.competition-card p {
-    font-size: 1em;
-    color: #666;
-    line-height: 1.5;
-}
-
+/* 5. موشن خفيف عند الوقوف على الكارت */
 .competition-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 20px rgba(0, 115, 230, 0.15);
+    border-color: #0073e6;
 }
-.competition-card a {
-    display: block;
-    text-decoration: none; 
-    color: inherit; 
-    background-color: #fff;
-}
-.place-img {
-    width: 150px;
-    height: 150px; 
-    flex-shrink: 0; 
-}
-.power-img {
-    width: 300px;
-    height: 210px; 
-    flex-shrink: 0; 
-}
-.move-img {
-    width: 300px;
-    height: 240px; 
-    flex-shrink: 0; 
-}
+.competition-card:hover { transform: translateY(-10px); }
+.competition-card a { text-decoration: none; color: inherit; }
+.place-img, .power-img, .move-img { width: 100%; border-radius: 12px; margin-top: 15px; }
 
+/* Social Links Buttons */
+.social-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 30px; }
+.social-links a {
+    text-decoration: none;
+    background: white;
+    padding: 12px 24px;
+    border-radius: 50px;
+    color: #333;
+    font-weight: 600;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.social-links a:hover { background: #0073e6; color: white; transform: scale(1.05); }
+
+footer { background: #1e293b; color: white; padding: 10px; text-align: center; }
+
+/* استجابة الموبايل */
+@media (max-width: 768px) {
+    .about-container { flex-direction: column; text-align: center; }
+    .skill-card { margin: 0 10px; }
+}

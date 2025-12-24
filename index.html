@@ -1,101 +1,187 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+    <title>Mohamed Awad | Portfolio</title>
+    <meta name="description"
+        content="Electronics and Communications Engineering Student Portfolio. Check out my projects and competitions.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://engmawad.github.io/">
+    <meta property="og:title" content="Mohamed Awad | Electronics and Communications Engineering Student Portfolio">
+    <meta property="og:description" content="Electronics and Communications Engineering Student Portfolio">
+    <meta property="og:image" content="https://engmawad.github.io/img/profile.jpg">
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="Mohamed Awad | Portfolio">
+    <meta property="twitter:description" content="Electronics and Communications Engineering Student Portfolio">
+    <meta property="twitter:image" content="https://engmawad.github.io/img/profile.jpg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mohamed Awad</title>
     <link rel="icon" href="img/profile.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <header>
-        <div class="container">
-            <h1>Welcome to Mohamed Awad's Website</h1>
-            <p>Electronics and Communications Engineering Student</p>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#competitions">competitions</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
 
+<body>
+    <header class="tech-navbar">
+        <nav class="nav-wrapper">
+            <ul class="nav-items">
+                <li><a href="#about">About</a></li>
+                <li><a href="#competitions">Competitions</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-base-line"></div>
+        </nav>
+    </header>
     <section id="about" class="section">
-        <h2>About Me</h2>
-        <div class="about-container">
-            <a href="img/profile.jpg">
-            <img src="img/profile.jpg" alt="Mohamed Awad" class="profile-img">
+
+        <div class="profile-wrapper">
+            <div class="profile-ring"></div>
+
+            <a href="#img1" class="profile-link">
+                <img src="img/profile.jpg" alt="Mohamed Awad" class="profile-img-pro">
             </a>
-            <p>Hi! I’m Mohamed Awad, an Electronics and Communications Engineering student. I have a deep passion for working on technical projects like robotics and remote control systems. I believe that technology is not just a tool, but a means to create change and make a positive impact on the world.</p>
+        </div>
+
+        <a href="#_" class="lightbox" id="img1">
+            <img src="img/profile.jpg">
+        </a>
+
+        <h1 class="name">ENG. Mohamed Awad</h1>
+        <h3>Electronics and Communications Engineering Student.</h3>
+        <br><br>
+
+
+        <div class="skills-grid">
+
+            <div class="skill-card">
+                <div class="icon-circle blue-bg"><i class="fas fa-microchip"></i></div>
+                <div class="skill-info">
+                    <h4>IoT & Embedded Systems</h4>
+                    <p>Hardware & Connectivity</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-circle green-bg"><i class="fas fa-terminal"></i></div>
+                <div class="skill-info">
+                    <h4>Programming</h4>
+                    <p>Python, C++</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-circle orange-bg"><i class="fas fa-mobile-alt"></i></div>
+                <div class="skill-info">
+                    <h4>Development Apps</h4>
+                    <p>App Inventor, Flet (Python)</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-circle purple-bg"><i class="fas fa-drafting-compass"></i></div>
+                <div class="skill-info">
+                    <h4>PCB Design</h4>
+                    <p>EasyEDA Expert</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-circle red-bg"><i class="fas fa-flask"></i></div>
+                <div class="skill-info">
+                    <h4>Simulation Tools</h4>
+                    <p>Circuit Wizard, Proteus</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-circle yellow-bg"><i class="fas fa-code"></i></div>
+                <div class="skill-info">
+                    <h4>Front End</h4>
+                    <p>HTML, CSS</p>
+                </div>
+            </div>
+
+            <div class="skill-card">
+                <div class="icon-circle darkblue-bg"><i class="fas fa-file-invoice"></i></div>
+                <div class="skill-info">
+                    <h4>Microsoft 365</h4>
+                    <p>Word, PowerPoint</p>
+                </div>
+            </div>
+
         </div>
     </section>
 
-    <section id="competitions" class="section">
-            <h2>Competitions</h2>
-            <div class="competitions-container">
-                <div class="competition-card">
-                <a href="competitions\iHOW Fest 2024\iHOW Fest 2024.html">
+    <section id="competitions" class="section dark-bg">
+        <h2>Competitions</h2>
+        <div class="competitions-container">
+            <div class="competition-card">
+                <a href="competitions/iHOW Fest 2025/iHOW Fest 2025.html">
+                    <h3>iHOW Fest 2025</h3>
+                    <img src="img/firstplace.png" alt="First Place" class="place-img">
+                </a>
+            </div>
+            <div class="competition-card">
+                <a href="competitions/iHOW Fest 2024/iHOW Fest 2024.html">
                     <h3>iHOW Fest 2024</h3>
                     <img src="img/firstplace.png" alt="First Place" class="place-img">
                 </a>
-                </div>
             </div>
+        </div>
     </section>
 
     <section id="projects" class="section">
         <h2>Projects</h2>
         <div class="competitions-container">
-            
             <div class="competition-card">
-                <a href="Project/PCB Power Supply/pcbpowersupplay.html">
-                    <h3>PCB Power Supplay DC OutPut 12v|9v|5v</h3>
-                    <img src="img/pcbpowersplay.png" alt="PCB Power Splay" class="power-img">
+                <a href="Project/Pollution Mapper App/Pollution Mapper App.html">
+                    <h3>Pollution Mapper App</h3>
+                    <img src="img/Pollution Mapper App.png" alt="Pollution Mapper" class="move-img">
+                </a>
+            </div>
+            <div class="competition-card">
+                <a href="Project/Pollution Mapper/Pollution Mapper.html">
+                    <h3>Pollution Mapper</h3>
+                    <img src="img/Pollution Mapper.png" alt="Pollution Mapper" class="move-img">
+                </a>
+            </div>
+            <div class="competition-card">
+                <a href="Project/PCB Power Supply/pcbpowersupply.html">
+                    <h3>PCB Power Supply</h3>
+                    <img src="img/pcbpowersupply.png" alt="PCB Power" class="power-img">
+                </a>
+            </div>
+            <div class="competition-card">
+                <a href="Project/MoveSync App/movesync App.html">
+                    <h3>MoveSync App</h3>
+                    <img src="img/MoveSync App.jpg" alt="MoveSync" class="move-img">
                 </a>
             </div>
             <div class="competition-card">
                 <a href="Project/MoveSync/movesync.html">
                     <h3>MoveSync</h3>
-                    <h3></h3>
                     <img src="img/movesync.png" alt="MoveSync" class="move-img">
                 </a>
             </div>
-
         </div>
     </section>
 
     <section id="contact" class="section">
         <h2>Contact Me</h2>
         <div class="social-links">
-            <a href="mailto:engmawad@proton.me" target="_blank">
-                <i class="fas fa-envelope"></i> Email
-            </a>
-            <a href="https://linkedin.com/in/engmawad" target="_blank">
-                <i class="fab fa-linkedin"></i> LinkedIn
-            </a>
-            <a href="https://github.com/engmawad" target="_blank">
-                <i class="fab fa-github"></i> GitHub
-            </a>
-        </div>
-        <div class="social-links">
-            <a href="https://wa.me/+201200762846" target="_blank">
-                <i class="fab fa-whatsapp"></i> WhatsApp
-            </a>
-            <a href="https://facebook.com/eng.m.awad.0" target="_blank">
-                <i class="fab fa-facebook"></i> Facebook
-            </a>
-            <a href="https://instagram.com/eng_m_awad" target="_blank">
-                <i class="fab fa-instagram"></i> Instagram
-            </a>
+            <a href="mailto:engmawad@proton.me"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://linkedin.com/in/engmawad" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+            <a href="https://github.com/engmawad" target="_blank"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://wa.me/+201200762846" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="https://facebook.com/eng.m.awad.0" target="_blank"><i class="fab fa-facebook"></i> Facebook</a>
+            <a href="https://instagram.com/eng_m_awad" target="_blank"><i class="fab fa-instagram"></i> Instagram</a>
         </div>
     </section>
-    
 
     <footer>
-        <p>&copy; 2024-2025 Mohamed Awad. All Rights Reserved.</p>
+        <p>&copy; 2026 Mohamed Awad. All Rights Reserved.</p>
     </footer>
 </body>
+
 </html>
