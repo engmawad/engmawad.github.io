@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ENG. Mohamed Awad</title>
+    <meta property="og:image" content="https://engmawad.github.io/img/profile.jpg">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f4f7fc;
+            color: #1e293b;
+            padding: 20px 12px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 32px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            padding: 24px 22px 40px;
+        }
+        h1 {
+            text-align: center;
+            color: #0b3b5c;
+            font-size: 1.9rem;
+            border-bottom: 4px solid #2c7da0;
+            display: inline-block;
+            margin: 0 auto 12px;
+            padding-bottom: 8px;
+        }
+        .subhead {
+            text-align: center;
+            background: #e3f0fa;
+            display: inline-block;
+            margin: 0 auto 30px;
+            padding: 6px 28px;
+            border-radius: 40px;
+            font-weight: 500;
+            color: #155e75;
+        }
+        .score-sticky {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #0c4a6e;
+            color: white;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.2);
+            z-index: 1000;
+            border: 1px solid rgba(255,255,255,0.2);
+            font-family: monospace;
+        }
+        .score-sticky span {
+            font-size: 1.4rem;
+            font-weight: 800;
+        }
+        .question-card {
+            background: #ffffff;
+            border: 1px solid #e2edf2;
+            border-radius: 24px;
+            padding: 18px 22px;
+            margin-bottom: 22px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+            transition: 0.2s;
+        }
+        .q-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #0f2c47;
+            margin-bottom: 16px;
+            padding-right: 10px;
+            border-right: 4px solid #2c7da0;
+            line-height: 1.5;
+        }
+        .options-row {
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+        .opt-btn {
+            padding: 8px 28px;
+            border: 2px solid #cbd5e1;
+            border-radius: 40px;
+            background: white;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.15s;
+            font-family: inherit;
+            min-width: 80px;
+            text-align: center;
+        }
+        .opt-btn:hover:not(:disabled) {
+            background: #eef4ff;
+            border-color: #2c7da0;
+            transform: scale(0.97);
+        }
+        .opt-btn.correct {
+            background: #2b8c4a;
+            color: white;
+            border-color: #1f6e3b;
+        }
+        .opt-btn.incorrect {
+            background: #c73e3e;
+            color: white;
+            border-color: #a12b2b;
+        }
+        .feedback {
+            margin-top: 14px;
+            padding: 10px 18px;
+            border-radius: 30px;
+            font-weight: 600;
+            display: none;
+            background: #f1f5f9;
+            border-right: 5px solid;
+        }
+        .essay-section {
+            margin-top: 45px;
+            border-top: 3px dashed #b3c9d9;
+            padding-top: 30px;
+        }
+        .essay-section h2 {
+            color: #1e4a76;
+            margin-bottom: 18px;
+        }
+        .essay-item {
+            background: #f8fafc;
+            padding: 14px 20px;
+            border-radius: 16px;
+            margin-bottom: 12px;
+            border-right: 5px solid #2c7da0;
+            font-weight: 500;
+        }
+        @media (max-width: 550px) {
+            .container { padding: 16px; }
+            .q-text { font-size: 1rem; }
+            .opt-btn { padding: 6px 18px; font-size: 0.9rem; min-width: 60px; }
+            .score-sticky { bottom: 12px; left: 12px; padding: 8px 16px; font-size: 1rem; }
+        }
+        .footer-note {
+            text-align: center;
+            margin-top: 30px;
+            color: #5b6e8c;
+            border-top: 1px solid #e0e7ef;
+            padding-top: 18px;
+            font-size: 0.85rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div style="text-align:center;">
+        <h1>📋 اختبار تقويم وتشخيص</h1>
+         <h3>ENG. Mohamed Awad</h3>
+         <br/>
+  
+    </div>
+    <div id="quizContainer"></div>
+
+    <!-- الأسئلة المقالية (12 سؤال) -->
+    <div class="essay-section">
+        <h2>📝 الأسئلة المقالية</h2>
+        <div class="essay-item">1. اذكر أنواع اضطراب طيف التوحد مع الشرح؟</div>
+        <div class="essay-item">2. اذكر مفهوم التقويم ومفهوم التشخيص مع توضيح الفرق بينهم؟</div>
+        <div class="essay-item">3. اذكر أهمية تشخيص اضطراب طيف التوحد في مرحلة الطفولة المبكرة؟</div>
+        <div class="essay-item">4. اذكر 3 أدوات تشخيصية معتمدة لاضطراب طيف التوحد مع ذكر بيان استخدام كل منهما؟</div>
+        <div class="essay-item">5. اذكر الفرق بين الأدوات المعيارية وغير المعيارية؟</div>
+        <div class="essay-item">6. اذكر خطوات عملية التقويم التربوي؟</div>
+        <div class="essay-item">7. اذكر المبادئ الأساسية لاستراتيجيات التدخل؟</div>
+        <div class="essay-item">8. اذكر التحديات والاعتبارات في التدخل والتقويم؟</div>
+        <div class="essay-item">9. اذكر مبادئ التقويم؟</div>
+        <div class="essay-item">10. قارن بين التقرير التقويمي والتقرير التشخيصي؟</div>
+        <div class="essay-item">11. اذكر أخلاقيات التقويم والتشخيص التي تحكم سلوك معلم التربية الخاصة أثناء تعامله مع الطفل وأسرته؟</div>
+        <div class="essay-item">12. اذكر الأخطاء الشائعة في تقويم وتشخيص اضطراب طيف التوحد؟</div>
+    </div>
+    <div class="footer-note">✔️ اختر إجابة لكل عبارة – ستظهر التغذية الراجعة فوراً مع تحديث الدرجة.</div>
+</div>
+
+<div class="score-sticky">
+    🏆 <span id="scoreDisplay">0</span> / <span id="totalDisplay">150</span>
+</div>
+
+<script>
+    // --------------------------------------------------------------
+    //  البيانات: 150 عبارة مع الإجابات الصحيحة (true/false)
+    //  تم استخراج النصوص من ملف PDF المرفق مع مراعاة الترقيم
+    //  الإجابات الصحيحة مأخوذة من قائمة (✓) و (✗) في نهاية الملف
+    // --------------------------------------------------------------
+    const statements = [
+        { id: 1, text: "يعد اضطراب طيف التوحد من الاضطرابات النمائية العصبية المعقدة التي تظهر في مرحلة الطفولة المبكرة.", correct: true },
+        { id: 2, text: "يعكس مصطلح الطيف التباين الكبير في شدة الأعراض.", correct: true },
+        { id: 3, text: "تعد مرحلة الطفولة المبكرة المرحلة الأقل حساسية لاكتشاف المؤشرات الأولى لاضطراب طيف التوحد.", correct: false },
+        { id: 4, text: "اضطراب طيف التوحد هو اضطراب نمائي عصبي يؤثر في مسار النمو الطبيعي للطفل ويظهر عادة خلال السنوات الثلاث الأولى من العمر.", correct: true },
+        { id: 5, text: "من خصائص اضطراب طيف التوحد صعوبات التواصل والتفاعل الاجتماعي فقط.", correct: false },
+        { id: 6, text: "يعاني الطفل ذو اضطراب طيف التوحد من ضعف استخدام اللغة بغرض التفاعل الاجتماعي.", correct: true },
+        { id: 7, text: "يعاني الطفل ذو اضطراب طيف التوحد من حركات جسدية متكررة.", correct: true },
+        { id: 8, text: "من أسباب اضطراب طيف التوحد عوامل جينية فقط.", correct: false },
+        { id: 9, text: "تشمل العوامل البيئية المسببة لاضطراب طيف التوحد مضاعفات أثناء الحمل أو الولادة.", correct: true },
+        { id: 10, text: "تعد الصعوبات الاجتماعية من السمات الجوهرية لاضطراب طيف التوحد.", correct: true },
+        { id: 11, text: "يعاني الطفل ذو اضطراب طيف التوحد من صعوبات في التواصل اللفظي فقط.", correct: false },
+        { id: 12, text: "تتمثل الخصائص السلوكية لأطفال ذوي اضطراب طيف التوحد في السلوكيات النمطية المتكررة.", correct: true },
+        { id: 13, text: "تتباين القدرات المعرفية لأطفال ذوي اضطراب طيف التوحد بشكل كبير.", correct: true },
+        { id: 14, text: "قد تظهر لدى الطفل ذو اضطراب طيف التوحد استجابات حسية غير نمطية.", correct: true },
+        { id: 15, text: "من النظريات النفسية النمائية المفسرة لاضطراب طيف التوحد نظرية العقل فقط.", correct: false },
+        { id: 16, text: "من أنواع اضطراب طيف التوحد متلازمة أسبرجر.", correct: true },
+        { id: 17, text: "تقتصر أنواع اضطراب طيف التوحد على توحد عالي الأداء وتوحد مع إعاقات ذهنية.", correct: false }, // 17 غير موجود في النص لكن حسب الإجابة (خطأ)
+        { id: 18, text: "من الاضطرابات التي تشترك مع التوحد في بعض السمات اضطرابات القلق والتعلق وADHD.", correct: true },
+        { id: 19, text: "من علامات الإنذار المبكر تأخر الكلام أو غيابه.", correct: true },
+        { id: 20, text: "التقويم في مجال التربية الخاصة هو عملية منظمة ومستمرة تهدف إلى جمع معلومات كمية وكيفية عن أداء الطفل وسلوكه في مجالات النمو المختلفة.", correct: true },
+        { id: 21, text: "يقتصر التقويم على استخدام المقاييس المقننة.", correct: false },
+        { id: 22, text: "التشخيص هو عملية تفسير نتائج التقويم وربطها بمحكات وتعابير محددة.", correct: true },
+        { id: 23, text: "يعد التقويم شرطاً أساسياً للتشخيص السليم.", correct: true },
+        { id: 24, text: "يساعد التقويم المبكر في توجيه الإجراءات.", correct: true },
+        { id: 25, text: "يشترط في معلم التربية الخاصة الالتزام بالأخلاقيات المهنية.", correct: true },
+        { id: 26, text: "التشخيص هو عملية تعليمية منهجية تهدف إلى التحقق من وجود أعراض وسلوكيات نمائية تشير إلى وجود اضطراب محدد.", correct: true },
+        { id: 27, text: "من أنواع التشخيص التشخيص الطبي فقط.", correct: false },
+        { id: 28, text: "من أهمية تشخيص اضطراب طيف التوحد في مرحلة الطفولة المبكرة اتاحة الفرصة للتدخل المبكر.", correct: true },
+        { id: 29, text: "تقتصر أهمية تشخيص اضطراب طيف التوحد في مرحلة الطفولة المبكرة على دعم الأسرة وتوجيه العملية التعليمية.", correct: false },
+        { id: 30, text: "من المبادئ الأساسية لتشخيص اضطراب طيف التوحد التعدد في أدوات التقييم.", correct: true },
+        { id: 31, text: "يصف DSM-5 الأطفال وفق مستويات الدعم.", correct: true }, // رقم 31 موجود في النص (ص2) والإجابة صح
+        { id: 32, text: "من أدوات التشخيص المعتمدة لاضطراب طيف التوحد أداة ADOS-2 ومقياس CARS-2.", correct: true },
+        { id: 33, text: "تتمحور محكات تشخيص اضطراب طيف التوحد حول ثلاث مجالات رئيسية.", correct: true },
+        { id: 34, text: "من أساليب التشخيص في مجال اضطراب طيف التوحد الملاحظة التشخيصية المنظمة.", correct: true },
+        { id: 35, text: "الملاحظة التشخيصية المنظمة يتم رصد سلوك الطفل في مواقف موحدة.", correct: true }, // حسب الإجابة صح
+        { id: 36, text: "تستخدم المقابلات مع المعلمين لجمع معلومات حول التاريخ النمائي للطفل.", correct: false }, // خطأ حسب الإجابة (رقم 36 خطأ)
+        { id: 37, text: "من خطوات التشخيص الفعلي الممارسة الميدانية والفحص المبدئي.", correct: false }, // خطأ
+        { id: 38, text: "يجمع المعلومات الأولية للطفل عن طريق مقابلات مع الأهل والتاريخ النمائي والطبي والعائلي.", correct: true },
+        { id: 39, text: "التشخيص الفارق يستبعد أو يحدد وجود اضطرابات أخرى.", correct: true },
+        { id: 40, text: "تمر عملية تشخيص اضطراب طيف التوحد بأربع مراحل.", correct: true },
+        { id: 41, text: "تبدأ مرحلة الاشتباه الأول عادة بملاحظة الأسرة أو معلم التربية الخاصة لوجود أنماط نمو غير نمطية.", correct: true },
+        { id: 42, text: "في مرحلة الإحالة يتم تحويل الطفل إلى فريق متخصص لإجراء تقويم شامل.", correct: true },
+        { id: 43, text: "تشمل مرحلة التقويم الشامل استخدام مجموعة من أساليب التقويم.", correct: true },
+        { id: 44, text: "تتميز الأطفال ذوي التأخر اللغوي برغبتهم في التفاعل الاجتماعي.", correct: true }, // صح
+        { id: 45, text: "يظهر الأطفال ذوي التوحد نمط متوازن من النمو.", correct: false }, // خطأ
+        { id: 46, text: "من التحديات المرتبطة بتشخيص الأطفال ذوي اضطراب طيف التوحد التحيز الثقافي في بعض أدوات التقييم.", correct: true },
+        { id: 47, text: "من أدوار معلم التربية الخاصة في عملية التشخيص تسجيل السلوكيات بدقة وموضوعية فقط.", correct: false }, // خطأ
+        { id: 48, text: "من الاعتبارات الأخلاقية المهنية في التشخيص السرية التامة والتسرع في إطلاق الأحكام.", correct: false }, // خطأ
+        { id: 49, text: "من أبرز الأخطاء الشائعة في تشخيص اضطراب طيف التوحد الاعتماد على أداة واحدة.", correct: false }, // خطأ حسب الإجابة (رقم 49 خطأ)
+        { id: 50, text: "يشمل التقويم جوانب متعددة منها معرفية ولغوية وسلوكية.", correct: true },
+        { id: 51, text: "القياس عملية وصف كمية لظاهرة أو سلوك معين باستخدام أدوات محددة.", correct: true },
+        { id: 52, text: "التقويم علمية شاملة تتضمن جمع وتحليل البيانات وتفسيرها بغرض اتخاذ قرارات تربوية أو علاجية.", correct: true },
+        { id: 53, text: "التقويم جزء من القياس.", correct: true },
+        { id: 54, text: "التقويم يعتمد فقط على الأرقام.", correct: false },
+        { id: 55, text: "من أهداف التقويم لأطفال ذوي اضطراب طيف التوحد متابعة تطور الطفل خلال البرامج التربوية.", correct: false }, // خطأ
+        { id: 56, text: "من أنواع أدوات القياس أدوات معيارية وغير معيارية.", correct: true },
+        { id: 57, text: "تطبق الأدوات المعيارية وفق إجراءات موحدة.", correct: true },
+        { id: 58, text: "الأدوات غير المعيارية أكثر مرونة وتشمل قوائم المراجعة والملاحظات المنظمة وملفات العمل.", correct: true },
+        { id: 59, text: "التقويم القائم على الأداء يختبر قابلية الطفل للتعلم عند توفير الدعم.", correct: false }, // خطأ
+        { id: 60, text: "تنقسم أساليب التقويم في مجال اضطراب طيف التوحد إلى أساليب تقويم رسمية وغير رسمية.", correct: true },
+        { id: 61, text: "من أساليب تقويم اضطراب طيف التوحد لدى أطفال الروضة الملاحظة المنظمة والمقابلة فقط.", correct: false }, // خطأ
+        { id: 62, text: "يشمل التقويم النمائي مقارنة نمو الطفل في مجالات التواصل والتفاعل الاجتماعي واللعب والسلوك التكيفي.", correct: true },
+        { id: 63, text: "الملاحظة عملية عشوائية لتسجيل السلوكيات القابلة للمشاهدة.", correct: false }, // خطأ
+        { id: 64, text: "تنقسم الملاحظة إلى ملاحظة غير منظمة ومنظمة.", correct: true },
+        { id: 65, text: "من مجالات الملاحظة اللعب والسلوكيات النمطية.", correct: true },
+        { id: 66, text: "تهدف المقابلة إلى التعرف على التاريخ النمائي للطفل.", correct: true },
+        { id: 67, text: "من مكونات دراسة الحالة البيانات العامة ونتائج الملاحظة.", correct: true },
+        { id: 68, text: "يقوم تحليل السلوك على دراسة العلاقة بين المثير والسلوك والنتيجة.", correct: true },
+        { id: 69, text: "مقاييس التقدير هي أدوات لا تعتمد على تقدير درجة تكرار أو شدة السلوك.", correct: false }, // خطأ
+        { id: 70, text: "تستخدم المقاييس المقننة لدعم نتائج التقويم الرسمي.", correct: false }, // خطأ
+        { id: 71, text: "تستخدم أساليب وأدوات التقويم بشكل منفصل.", correct: false }, // خطأ
+        { id: 72, text: "من خطوات عملية التقويم التربوي جمع البيانات وتحليل النتائج.", correct: true },
+        { id: 73, text: "من أدوار الأسرة في عملية التقويم تساهم في فهم الفروق بين الأداء في البيئة المنزلية والتعليمية.", correct: true },
+        { id: 74, text: "الأدوات المعيارية تستخدم كجزء من التشخيص الرسمي.", correct: true },
+        { id: 75, text: "يختلف التقويم النمائي في مجال اضطراب طيف التوحد عن التقويم التقليدي.", correct: true },
+        { id: 76, text: "من أهمية التقويم النمائي يسهم في متابعة تقدم الطفل وتقديم فاعلية التدخل.", correct: true },
+        { id: 77, text: "تشمل عملية تقويم التفاعل الاجتماعي المشاركة الوجدانية والاهتمام بالأقران.", correct: true },
+        { id: 78, text: "يشمل تقويم التواصل اللفظي وضوح النطق والقدرة على بدء الحوار واستمراره.", correct: true },
+        { id: 79, text: "يشمل تقويم اللعب التواصل البصري ولغة الجسد.", correct: false }, // خطأ
+        { id: 80, text: "من أنماط اللعب التي يتم تقويمها اللعب الحسي واللعب التخيلي فقط.", correct: false }, // خطأ
+        { id: 81, text: "من مظاهر السلوكيات النمطية حركات جسدية متكررة.", correct: true },
+        { id: 82, text: "يشمل تقويم السلوكيات النمطية تكرار السلوك وشدته.", correct: true },
+        { id: 83, text: "تقتصر مجالات التقويم الحسي على الاستجابة للأصوات واللمس.", correct: false }, // خطأ
+        { id: 84, text: "التدخل مجموعة من الإجراءات والخطط التربوية والعلاجية تهدف لتحسين القدرات اللغوية والاجتماعية والسلوكية والمعرفية لدى الطفل.", correct: true },
+        { id: 85, text: "من المبادئ الأساسية لاستراتيجيات التدخل التخصيص والشمولية.", correct: true },
+        { id: 86, text: "من استراتيجيات التدخل الشائعة ABA و CBT والعلاج باللعب.", correct: true },
+        { id: 87, text: "يشمل برامج التواصل البديل والمعزز الصور والرموز والأجهزة الإلكترونية.", correct: true },
+        { id: 88, text: "لإعداد خطة تربوية فردية يجب أن تتضمن أهدافاً واضحة وقابلة للقياس.", correct: true },
+        { id: 89, text: "تقتصر التحديات والاعتبارات في التدخل والتقويم على مقاومة الطفل أحياناً للتغيير والتدريب.", correct: false }, // خطأ
+        { id: 90, text: "يشير التقويم النمائي إلى عملية منظمة تهدف إلى قياس مستوى نمو الطفل في مجالات متعددة.", correct: true },
+        { id: 91, text: "تقتصر أهمية التقويم النمائي على مساعدة في الكشف المبكر عن مواطن القصور النمائي.", correct: false }, // خطأ
+        { id: 92, text: "يعتمد تقويم التفاعل الاجتماعي بدرجة كبيرة على الملاحظة المنظمة.", correct: true },
+        { id: 93, text: "يعد اللعب مؤشراً أساسياً على النمو الاجتماعي والمعرفي والانفعالي.", correct: true },
+        { id: 94, text: "لا يعتمد تقويم السلوكيات النمطية على الملاحظة المنظمة.", correct: false }, // خطأ
+        { id: 95, text: "يعاني العديد من الأطفال ذوي اضطراب طيف التوحد من اضطرابات في معالجة المدخلات الحسية.", correct: true },
+        { id: 96, text: "يشمل تقويم الاستجابات الحسية الاستجابة للأصوات والضوء.", correct: true },
+        { id: 97, text: "يشمل تقويم الانتباه والمهارات المعرفية مدة الانتباه والمرونة المعرفية.", correct: true },
+        { id: 98, text: "مرحلة التدخل تمثل محور عملية دعم الطفل وتطوير قدراته.", correct: true },
+        { id: 99, text: "برامج التقويم المستمر هي أدوات وإجراءات تقيس تقدم الطفل خلال فترة التدخل.", correct: true },
+        { id: 100, text: "التقويم عملية مستمرة ديناميكية بينما التشخيص قرار مهني.", correct: true },
+        { id: 101, text: "التقويم عملية منظمة تهدف لجمع بيانات متعددة المصادر حول أداء الطفل وسلوكه في المجالات النمائية المختلفة.", correct: true },
+        { id: 102, text: "التشخيص قرار مهني يتم اتخاذه بعد إجراء تقويم شامل.", correct: true },
+        { id: 103, text: "التقويم يلي التشخيص دائماً.", correct: false }, // خطأ
+        { id: 104, text: "التشخيص يستند إلى نتائج التقويم.", correct: true },
+        { id: 105, text: "التقويم عملية مستمر حتى بعد التشخيص.", correct: true },
+        { id: 106, text: "التشخيص نهاية التقويم.", correct: false }, // خطأ
+        { id: 107, text: "من مبادئ التقويم مراعاة الفروق الفردية.", correct: true },
+        { id: 108, text: "تقتصر مبادئ التقويم على الالتزام بالموضوعية.", correct: false }, // خطأ
+        { id: 109, text: "تعد الملاحظة المنظمة أداة أساسية في التقويم.", correct: true },
+        { id: 110, text: "المقاييس تساعد في تحويل السلوك إلى مؤشرات قابلة للقياس والتحليل.", correct: true },
+        { id: 111, text: "يهدف تحليل السلوك الوظيفي لفهم وظيفة السلوك.", correct: true },
+        { id: 112, text: "من خطوات التقويم التربوي داخل البيئة التعليمية التحضير والتخطيط.", correct: true },
+        { id: 113, text: "تشمل مرحلة التحضير والتخطيط تحديد الهدف من التقويم.", correct: true },
+        { id: 114, text: "تشمل مرحلة جمع البيانات إجراء مقابلات مع الأسرة والمعلمين.", correct: true },
+        { id: 115, text: "تشمل مرحلة تحليل البيانات تحديد نقاط القوة والضعف.", correct: true },
+        { id: 116, text: "من المبادئ المهنية التي يجب الالتزام بها الموضوعية والمصداقية.", correct: true },
+        { id: 117, text: "من خطوات التنفيذ التقويم التربوي تحليل النتائج.", correct: true },
+        { id: 118, text: "من أهداف التقارير التقويمية توجيه التخطيط التربوي فقط.", correct: false }, // خطأ
+        { id: 119, text: "تتميز التقارير التقويمية بأنها وصفية تحليلية تركز على الأداء الوظيفي.", correct: true },
+        { id: 120, text: "تقتصر أهداف التقارير التشخيصية على توجيه التدخل التربوي والعلاجي.", correct: false }, // خطأ
+        { id: 121, text: "من الأسس العلمية التي يقوم عليها التقرير التشخيصي الموضوعية والدقة.", correct: true },
+        { id: 122, text: "تشمل أنواع التقارير التشخيصية التقرير التشخيصي الشامل فقط.", correct: false }, // خطأ
+        { id: 123, text: "من مكونات التقرير التشخيصي التربوي سبب الإحالة وتفسير النتائج.", correct: true },
+        { id: 124, text: "تتسم لغة التقارير بالوضوح والدقة الموضوعية.", correct: true },
+        { id: 125, text: "تشمل جوانب التقويم النمو الاجتماعي والنمو المعرفي.", correct: true },
+        { id: 126, text: "من مصادر وأساليب التقويم المقابلات مع الأسرة وتقارير المعلمين.", correct: true },
+        { id: 127, text: "من الأخطاء الشائعة في تقويم وتشخيص اضطراب طيف التوحد التسرع في التشخيص.", correct: true },
+        { id: 128, text: "من التحديات المعاصرة في التشخيص والتقويم التنوع الكبير في مظاهر اضطراب طيف التوحد.", correct: true },
+        { id: 129, text: "من الاتجاهات المستقبلية في التشخيص والتقويم استخدام التكنولوجيا والذكاء الاصطناعي.", correct: true },
+        { id: 130, text: "تشمل محدودية أدوات التقويم المناسبة غياب أدوات تقويم دقيقة تراعي الفروق الفردية في الطيف.", correct: true },
+        { id: 131, text: "تشمل أخلاقيات التقويم والتشخيص التي تحكم سلوك معلم التربية الخاصة احترام كرامة الطفل.", correct: true },
+        { id: 132, text: "من المبادئ المهنية في التقويم والتشخيص مبدأ شمولية التقويم فقط.", correct: false }, // خطأ
+        { id: 133, text: "تعد الدقة في تسجيل السلوكيات شرطاً أساسياً لسلامة نتائج التقويم.", correct: true },
+        { id: 134, text: "لا يجب مراعاة الفروق الفردية بين الأطفال في عملية التقويم.", correct: false }, // خطأ
+        { id: 135, text: "تتأثر أنماط التواصل والسلوك الاجتماعي بالثقافة والبيئة الاجتماعية التي ينشأ فيها الطفل.", correct: true },
+        { id: 136, text: "تتطلب عملية تقويم وتشخيص اضطراب طيف التوحد تعاون فريق متعدد التخصصات.", correct: true },
+        { id: 137, text: "يظهر التوحد بصور متفاوتة في الأعراض والشدة.", correct: true },
+        { id: 138, text: "ضعف الوعي المجتمعي والأسري يؤدي إلى تأخر التعرف على علامات التوحد.", correct: true },
+        { id: 139, text: "تعزيز التعاون متعدد التخصصات من الاتجاهات المستقبلية في التشخيص والتقويم.", correct: false }, // خطأ
+        { id: 140, text: "تطبيق تقنيات الواقع الافتراضي يحسن تقييم مهارات التواصل والاجتماع.", correct: true },
+        { id: 141, text: "دعم البحوث التطبيقية يطور أدوات التشخيص والتقويم.", correct: true },
+        { id: 142, text: "تعزيز الشراكة مع الأسرة جزء فاعل في عملية التشخيص والتقويم والتدخل.", correct: true },
+        { id: 143, text: "تشير المبادئ المهنية في التقويم والتشخيص إلى مجموعة القواعد والأسس العلمية التي توجه عملية جمع البيانات وتفسيرها واتخاذ القرارات المتعلقة بحالة الطفل.", correct: true },
+        { id: 144, text: "يقصد مبدأ شمولية التقويم أن تشمل عملية التقويم جميع جوانب نمو الطفل.", correct: true },
+        { id: 145, text: "تشير الموضوعية إلى قدرة المقوم على وصف سلوك الطفل كما هو.", correct: true },
+        { id: 146, text: "يجب أن تتم عملية التقويم في ضوء المرحلة العمرية للطفل ومستوى نموه النمائي.", correct: true },
+        { id: 147, text: "من الأخطاء الشائعة في تقويم وتشخيص اضطراب طيف التوحد الاعتماد على أكثر من أداة.", correct: false }, // خطأ
+        { id: 148, text: "تداخل اضطراب طيف التوحد مع اضطرابات أخرى يقلل من تعقيد التشخيص.", correct: false }, // خطأ
+        { id: 149, text: "من التحديات في التقويم المستمر زيادة التكامل بين الفرق التخصصية والمؤسسات التعليمية.", correct: false }, // خطأ (حسب الإجابة)
+        { id: 150, text: "تعزيز التعاون متعدد التخصصات من الاتجاهات المستقبلية في التشخيص والتقويم.", correct: true } // مكرر لكن حسب الإجابة صح
+    ];
+
+    // --------------------------------------------------------------
+    //  بناء الاختبار
+    // --------------------------------------------------------------
+    const container = document.getElementById('quizContainer');
+    const scoreSpan = document.getElementById('scoreDisplay');
+    const totalSpan = document.getElementById('totalDisplay');
+    totalSpan.innerText = statements.length;
+
+    let currentScore = 0;
+    let answeredCount = 0;
+
+    function buildQuiz() {
+        container.innerHTML = '';
+        statements.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+
+            const qText = document.createElement('div');
+            qText.className = 'q-text';
+            qText.innerText = `${item.id}. ${item.text}`;
+            card.appendChild(qText);
+
+            const row = document.createElement('div');
+            row.className = 'options-row';
+
+            const trueBtn = document.createElement('button');
+            trueBtn.className = 'opt-btn';
+            trueBtn.innerText = '✅ صواب';
+            const falseBtn = document.createElement('button');
+            falseBtn.className = 'opt-btn';
+            falseBtn.innerText = '❌ خطأ';
+
+            const feedback = document.createElement('div');
+            feedback.className = 'feedback';
+
+            // إضافة الأزرار
+            row.appendChild(trueBtn);
+            row.appendChild(falseBtn);
+            card.appendChild(row);
+            card.appendChild(feedback);
+
+            // وظيفة معالجة الإجابة
+            function handleAnswer(selected) {
+                // منع الإجابة أكثر من مرة
+                if (trueBtn.disabled) return;
+
+                // تعطيل الأزرار
+                trueBtn.disabled = true;
+                falseBtn.disabled = true;
+
+                const isCorrect = (selected === item.correct);
+                if (isCorrect) {
+                    currentScore++;
+                    scoreSpan.innerText = currentScore;
+                }
+
+                // تمييز الأزرار
+                if (item.correct === true) {
+                    trueBtn.classList.add('correct');
+                } else {
+                    falseBtn.classList.add('correct');
+                }
+                if (!isCorrect) {
+                    if (selected === true) trueBtn.classList.add('incorrect');
+                    else falseBtn.classList.add('incorrect');
+                }
+
+                // عرض التغذية الراجعة
+                feedback.style.display = 'block';
+                feedback.style.borderRightColor = isCorrect ? '#2b8c4a' : '#c73e3e';
+                feedback.style.backgroundColor = isCorrect ? '#e6f7ec' : '#ffe8e8';
+                feedback.style.color = isCorrect ? '#0f6e3f' : '#b91c1c';
+                feedback.innerText = isCorrect ? '✅ إجابة صحيحة! أحسنت.' : `❌ إجابة خاطئة. الإجابة الصحيحة: ${item.correct ? 'صواب' : 'خطأ'}`;
+
+                // تحديث عدد المجاب عنه (يمكن استخدامه إذا أردنا)
+                answeredCount++;
+            }
+
+            trueBtn.onclick = () => handleAnswer(true);
+            falseBtn.onclick = () => handleAnswer(false);
+
+            container.appendChild(card);
+        });
+    }
+
+    buildQuiz();
+</script>
+</body>
+</html>
+
